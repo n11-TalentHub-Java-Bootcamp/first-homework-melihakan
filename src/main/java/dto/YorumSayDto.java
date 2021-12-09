@@ -14,10 +14,10 @@ public class YorumSayDto {
     }
 
     public YorumSayDto(Long urunId, String urunName, BigDecimal fiyat, Long yorumSayisi) {
-        this.setUrunId(urunId);
-        this.setUrunName(urunName);
-        this.setFiyat(fiyat);
-        this.setYorumSayisi(yorumSayisi);
+        this.urunId = urunId;
+        this.urunName = urunName;
+        this.fiyat = fiyat;
+        this.yorumSayisi = yorumSayisi;
     }
 
     public Long getUrunId() {

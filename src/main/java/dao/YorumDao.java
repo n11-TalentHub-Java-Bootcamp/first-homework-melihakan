@@ -15,12 +15,23 @@ public class YorumDao extends BaseDao {
         Query query = getSessionFactory().createQuery(sql);
         return query.list();
     }
-    public List<YorumSayDto> findAllUrunDetayDtoByKategoriKirilim(Long id){
-        String sql = "select count(urunyorum.yorum)from UrunYorum urunyorum " +
-                " left join Kullanici kullanici  on urunyorum.kullanici.id = kullanici.id "+
-                "where kullanici.id = :id ";
+    public List<YorumSayDto> countCommentNum(){
+        String sql = "select distinct new dto.YorumSayDto( urun.urun.id, urun.urun.adi, urun.urun.fiyat, count (urun.id)) from UrunYorum urun group by urun.urun.id, urun.urun.adi, urun.urun.fiyat,urun.id";
         Query query = getSessionFactory().createQuery(sql);
-        query.setParameter("id", id);
+
+        return query.list();
+    }
+    public List<CommentListDto> commentList(){
+
+        String sql = "select new dto.CommentListDto( urun.urun.adi, urun.urun.kategori.adi, urun.urun.fiyat, urun.kullanici.adi, urun.kullanici.soyadi, urun.kullanici.email, urun.kullanici.telefon, urun.yorum, urun.yorumTarihi ) from UrunYorum urun ";
+        Query query = getSessionFactory().createQuery(sql);
+
+        return query.list();
+    }
+    public List<UserCommentListDto> userCommentListDto(){
+        String sql = "select new dto.UserCommentListDto( urun.kullanici.id, urun.kullanici.adi,urun.urun.adi, urun.yorum, urun.yorumTarihi ) from UrunYorum urun ";
+        Query query = getSessionFactory().createQuery(sql);
+
         return query.list();
     }
 

@@ -10,10 +10,10 @@ import java.util.List;
 public class FindYorumAllApp {
     public static void main(String[] args) {
         YorumEntityService service = new YorumEntityService();
-        List<UrunYorum> urunYorumList = service.findAll();
+        List<CommentListDto> commentListDtos = service.commentList();
 
-        for (UrunYorum urunYorum : urunYorumList) {
-            System.out.println(urunYorum);
+        for (CommentListDto commentListDto : commentListDtos) {
+            System.out.println(commentListDto);
         }
 
     }

@@ -20,7 +20,13 @@ public class YorumEntityService {
         return yorumDao.findAll();
     }
 
-    public List<YorumSayDto> findAllUrunDetayDtoByKategoriKirilim(Long id) {
-        return yorumDao.findAllUrunDetayDtoByKategoriKirilim(id);
+    public List<YorumSayDto> countCommentNum(){
+        return yorumDao.countCommentNum();
+    }
+    public List<CommentListDto> commentList(){
+        return yorumDao.commentList();
+    }
+    public List<UserCommentListDto> userCommentListDto(){
+        return yorumDao.userCommentListDto();
     }
 }
